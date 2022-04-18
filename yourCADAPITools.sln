@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yourCADAPITools", "yourCADAPITools\yourCADAPITools.csproj", "{ECCCED22-5D53-498F-8545-DE8D4649420D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECCCED22-5D53-498F-8545-DE8D4649420D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECCCED22-5D53-498F-8545-DE8D4649420D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECCCED22-5D53-498F-8545-DE8D4649420D}.Debug|x86.ActiveCfg = Debug|x86
+		{ECCCED22-5D53-498F-8545-DE8D4649420D}.Debug|x86.Build.0 = Debug|x86
+		{ECCCED22-5D53-498F-8545-DE8D4649420D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECCCED22-5D53-498F-8545-DE8D4649420D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECCCED22-5D53-498F-8545-DE8D4649420D}.Release|x86.ActiveCfg = Release|x86
+		{ECCCED22-5D53-498F-8545-DE8D4649420D}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D29D6C97-A738-4E5D-B8B6-F4A37B6CB8BC}
+	EndGlobalSection
+EndGlobal
