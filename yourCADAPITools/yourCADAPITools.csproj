@@ -45,18 +45,44 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="HelpCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\TextViewPosition.cs" />
+    <Compile Include="Core\TextViewSelection.cs" />
+    <Compile Include="Core\ApiUrlFinder.cs" />
+    <Compile Include="UrlNavigate\AutoCADUrlNavigation.cs" />
+    <Compile Include="UrlNavigate\InventorUrlNavigation.cs" />
+    <Compile Include="UrlNavigate\Revit\RevitInfo.cs" />
+    <Compile Include="UrlNavigate\Revit\RevitInfoManager.cs" />
+    <Compile Include="UrlNavigate\Revit\RevitUrlNavigation.cs" />
+    <Compile Include="UrlNavigate\Revit\RevitVersion.cs" />
+    <Compile Include="UrlNavigate\RhinoCommonUrlNavigation.cs" />
+    <Compile Include="UrlNavigate\SolidWorksUrlNavigation.cs" />
+    <Compile Include="UrlNavigate\UrlNavigation.cs" />
     <Compile Include="yourCADAPIToolsPackage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="License.rtf" />
+    <None Include="Resources\RevitAPI2022.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.LanguageServices">
+      <Version>4.1.0</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.31902.203" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.1.4054" />
   </ItemGroup>
@@ -65,6 +91,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="Resources\HelpCommand.png" />
+    <VSCTCompile Include="yourCADAPIToolsPackage.vsct">
+      <ResourceName>Menus.ctmenu</ResourceName>
+    </VSCTCompile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />

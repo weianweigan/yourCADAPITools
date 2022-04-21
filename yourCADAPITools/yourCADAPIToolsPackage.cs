@@ -1,6 +1,14 @@
 ﻿using System;
+using System.Composition;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Microsoft;
+using Microsoft.VisualStudio;
+using Microsoft.VisualStudio.ComponentModelHost;
+using Microsoft.VisualStudio.LanguageServices;
+//using System.Composition;
+//using Microsoft.VisualStudio.ComponentModelHost;
+//using Microsoft.VisualStudio.LanguageServices;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
@@ -25,12 +33,18 @@ namespace yourCADAPITools
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(yourCADAPIToolsPackage.PackageGuidString)]
+    [ProvideMenuResource("Menus.ctmenu", 1)]
+    [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
+    [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
     public sealed class yourCADAPIToolsPackage : AsyncPackage
     {
         /// <summary>
         /// yourCADAPIToolsPackage GUID string.
         /// </summary>
         public const string PackageGuidString = "01a4156c-900e-4bf9-b30e-24bcd0c861d2";
+
+        [Import]
+        public static VisualStudioWorkspace VSWorkspace { get; set; }
 
         #region Package Members
 
@@ -46,6 +60,12 @@ namespace yourCADAPITools
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            await HelpCommand.InitializeAsync(this);
+
+            var componentModel = (IComponentModel)await GetServiceAsync(typeof(SComponentModel));
+            Assumes.Present(componentModel);
+            var vsWorksSpace = componentModel.GetService<VisualStudioWorkspace>();
+            VSWorkspace = vsWorksSpace;
         }
 
         #endregion
