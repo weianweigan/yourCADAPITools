@@ -28,6 +28,9 @@ namespace yourCADAPITools
             }else if(nameSpace.StartsWith("Rhino."))
             {
                 return new RhinoCommonUrlNavigation(nameSpace,symbolInfo);
+            }else if(nameSpace.StartsWith("Autodesk.Revit."))
+            {
+                return new RevitUrlNavigation(nameSpace,symbolInfo);
             }
             else
             {

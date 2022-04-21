@@ -5,14 +5,16 @@ namespace yourCADAPITools
 {
     public class RevitUrlNavigation : UrlNavigation
     {
-        public RevitUrlNavigation(SymbolInfo symbolInfo) :
+        public RevitUrlNavigation(string nameSpace,SymbolInfo symbolInfo) :
             base(symbolInfo)
         {
+
         }
 
         public override bool TryGetUrl(out string url)
         {
-            throw new System.NotImplementedException();
+            url = RevitInfoManager.FindLink(_symbolInfo.Symbol.Name);
+            return !string.IsNullOrEmpty(url);
         }
     }
 }
