@@ -25,7 +25,7 @@ namespace yourCADAPITools
         {
             var directory = Path.GetDirectoryName(typeof(RevitUrlNavigation).Assembly.Location);
 
-            string filepath = $"{directory}\\RevitAPI2022.json";
+            string filepath = $"{directory}\\Resources\\RevitAPI2022.json";
 
             if (!File.Exists(filepath))
             {
@@ -47,16 +47,16 @@ namespace yourCADAPITools
             {
                 apiName = apiName.Split('`').First();
             }
-            return deserializeObject.FirstOrDefault(x => x.APIName.Replace("(", ".").Replace(")", "").Contains(apiName));
+            return deserializeObject.FirstOrDefault(x => x.APIName == apiName);
         }
 
         public static string FindLink(string apiName)
         {
             Init();
             var revitInfo = Find(apiName);
-            if (revitInfo != null)
+            if (revitInfo == null)
             {
-                return null;
+                throw new KeyNotFoundException(apiName);
             }
             else
             {

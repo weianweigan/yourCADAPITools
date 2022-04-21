@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoCAD.NET" Version="24.2.0" />
+    <PackageReference Include="Revit.RevitApi.x64" Version="2021.0.0" />
+    <PackageReference Include="Revit.RevitApiUI.x64" Version="2021.0.0" />
+    <PackageReference Include="Rhino3dm" Version="7.14.0" />
+    <PackageReference Include="Xarial.XCad.SolidWorks.Interops" Version="0.4.0" />
+  </ItemGroup>
+
+</Project>

@@ -21,7 +21,12 @@ namespace yourCADAPITools
 
         public static UrlNavigation Create(SymbolInfo symbolInfo)
         {
-            string nameSpace = symbolInfo.Symbol.ContainingAssembly.Name;
+            if (symbolInfo.Symbol == null)
+            {
+                throw new NotSupportedNameSpaceException($"Please select a type,property or method");
+            }
+
+            string nameSpace = symbolInfo.Symbol.ContainingNamespace.ToString();
             if (nameSpace.StartsWith("SolidWorks.Interop."))
             {
                 return new SolidWorksUrlNavigation(nameSpace,symbolInfo);

@@ -13,7 +13,7 @@ namespace yourCADAPITools
             Version = version;
 
             var data = nameSpace.Split('.');
-            if(nameSpace.EndsWith(data[data.Length - 1]))
+            if(data[data.Length - 1] == "swconst")
             {
                 UrlBase = string.Format(UrlBase, version, "swconst");
             }else
@@ -65,43 +65,38 @@ namespace yourCADAPITools
 
         private string CombinePropertyAndMethodUrl(string urlBase)
         {
-            string nameSpace = _symbolInfo.Symbol.ContainingAssembly.Name;
             string typeName = _symbolInfo.Symbol.ContainingType.Name;
             string definiationName = _symbolInfo.Symbol.OriginalDefinition.Name;
 
-            return $"{urlBase}{nameSpace}^{nameSpace}^{typeName}^{definiationName}.html";
+            return $"{urlBase}{NameSpace}~{NameSpace}~{typeName}~{definiationName}.html";
         }
 
         private string CombineFieldUrl(string urlBase)
         {
-            string nameSpace = _symbolInfo.Symbol.ContainingAssembly.Name;
             string typeName = _symbolInfo.Symbol.ContainingType.Name;
 
-            return $"{urlBase}{nameSpace}^{nameSpace}.{typeName}.html";
+            return $"{urlBase}{NameSpace}^{NameSpace}.{typeName}.html";
         }
 
         private string CombineNameTypeUrl(string urlBase)
         {
-            string nameSpace = _symbolInfo.Symbol.ContainingAssembly.Name;
             string className = _symbolInfo.Symbol.Name;
 
             if (className.EndsWith("_e"))
             {
                 //Enum Type
-                return $"{urlBase}{nameSpace}~{nameSpace}.{className}.html";
+                return $"{urlBase}{NameSpace}~{NameSpace}.{className}.html";
             }
             else if (!className.StartsWith("I") || className.StartsWith("Import") || className.StartsWith("Inter"))
             {
                 className = "I"+ className;
             }            
-            return $"{urlBase}{nameSpace}~{nameSpace}.{className}_members.html";
+            return $"{urlBase}{NameSpace}~{NameSpace}.{className}_members.html";
         }
 
         private string CombineNameSpaceUrl(string urlBase)
         {
-            string nameSpace = _symbolInfo.Symbol.ContainingAssembly.Name;
-
-            return $"{urlBase}{nameSpace}~{nameSpace}_namespace.html";
+            return $"{urlBase}{NameSpace}~{NameSpace}_namespace.html";
         }
     }
 }
