@@ -86,11 +86,25 @@ namespace yourCADAPITools
         /// </summary>
         /// <param name="sender">Event sender.</param>
         /// <param name="e">Event args.</param>
-        private async void Execute(object sender, EventArgs e)
+        private void Execute(object sender, EventArgs e)
         {
-            var finder = new ApiUrlFinder(ServiceProvider);
-            var selection = await finder.FindTextSelectionAsync();
-            await finder.FindSymbolAndNavigateAsync(selection);
+            try
+            {
+                var finder = new ApiUrlFinder(package);
+                var selection = finder.FindTextSelection();
+                finder.FindSymbolAndNavigate(selection);
+            }
+            catch (Exception ex)
+            {
+                VsShellUtilities.ShowMessageBox(
+                    package, 
+                    ex.Message, 
+                    "Error",
+                    OLEMSGICON.OLEMSGICON_WARNING, 
+                    OLEMSGBUTTON.OLEMSGBUTTON_OK, 
+                    OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+            }
+
         }
     }
 }

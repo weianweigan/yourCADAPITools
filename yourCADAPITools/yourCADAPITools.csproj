@@ -52,6 +52,7 @@
     <Compile Include="Core\ApiUrlFinder.cs" />
     <Compile Include="UrlNavigate\AutoCADUrlNavigation.cs" />
     <Compile Include="UrlNavigate\InventorUrlNavigation.cs" />
+    <Compile Include="UrlNavigate\NotSupportedNameSpaceException.cs" />
     <Compile Include="UrlNavigate\Revit\RevitInfo.cs" />
     <Compile Include="UrlNavigate\Revit\RevitInfoManager.cs" />
     <Compile Include="UrlNavigate\Revit\RevitUrlNavigation.cs" />
@@ -91,6 +92,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="Assets\Icons\HelpBtnIcon.png" />
     <Content Include="Resources\HelpCommand.png" />
     <VSCTCompile Include="yourCADAPIToolsPackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>

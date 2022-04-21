@@ -24,11 +24,14 @@ namespace yourCADAPITools
             string nameSpace = symbolInfo.Symbol.ContainingAssembly.Name;
             if (nameSpace.StartsWith("SolidWorks.Interop."))
             {
-                return new SolidWorksUrlNavigation(symbolInfo);
+                return new SolidWorksUrlNavigation(nameSpace,symbolInfo);
+            }else if(nameSpace.StartsWith("Rhino."))
+            {
+                return new RhinoCommonUrlNavigation(nameSpace,symbolInfo);
             }
             else
             {
-                return null;
+                throw new NotSupportedNameSpaceException($"{nameSpace} Not Supported");
             }
         }
 

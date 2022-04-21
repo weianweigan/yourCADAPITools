@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft;
 using Microsoft.CodeAnalysis;
@@ -9,16 +10,16 @@ namespace yourCADAPITools
 {
     public class ApiUrlFinder
     {
-        private readonly IAsyncServiceProvider _serviceProvider;
+        private readonly IServiceProvider _serviceProvider;
 
-        public ApiUrlFinder(IAsyncServiceProvider serviceProvider)
+        public ApiUrlFinder(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }
 
-        public async Task<TextViewSelection> FindTextSelectionAsync()
+        public TextViewSelection FindTextSelection()
         {
-            var textMgr = await _serviceProvider.GetServiceAsync(typeof(SVsTextManager)) as IVsTextManager2;
+            var textMgr = _serviceProvider.GetService(typeof(SVsTextManager)) as IVsTextManager2;
             Assumes.Present(textMgr);
             _ = textMgr.GetActiveView2(1, null, (uint)_VIEWFRAMETYPE.vftCodeWindow, out var textView);
 
@@ -36,10 +37,9 @@ namespace yourCADAPITools
             return selection;
         }
 
-        public async Task FindSymbolAndNavigateAsync(TextViewSelection selection)
+        public void FindSymbolAndNavigate(TextViewSelection selection)
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(); 
-            var dte = await _serviceProvider.GetServiceAsync(typeof(EnvDTE.DTE)) as EnvDTE80.DTE2;
+            var dte = _serviceProvider.GetService(typeof(EnvDTE.DTE)) as EnvDTE80.DTE2;
             Assumes.Present(dte);
             var doc = dte.ActiveDocument;
             if (doc == null)
@@ -61,8 +61,8 @@ namespace yourCADAPITools
             {
                 return;
             }
-            var model = await vsDoc.GetSemanticModelAsync();
-            var root = await model.SyntaxTree.GetRootAsync();
+            var model = vsDoc.GetSemanticModelAsync().GetAwaiter().GetResult();
+            var root = model.SyntaxTree.GetRootAsync().GetAwaiter().GetResult();
             var node = root.FindNode(new Microsoft.CodeAnalysis.Text.TextSpan(
                 selection.StartPosition.Postion,
                 selection.EndPosition.Postion - selection.StartPosition.Postion));

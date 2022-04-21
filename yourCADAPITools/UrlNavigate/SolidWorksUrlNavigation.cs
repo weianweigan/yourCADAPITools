@@ -4,18 +4,33 @@ namespace yourCADAPITools
 {
     public class SolidWorksUrlNavigation : UrlNavigation
     {
-        public SolidWorksUrlNavigation(SymbolInfo symbolInfo):base(symbolInfo)
+        public SolidWorksUrlNavigation(
+            string nameSpace,
+            SymbolInfo symbolInfo,
+            int version = 2022):base(symbolInfo)
         {
-            
+            NameSpace = nameSpace;
+            Version = version;
+
+            var data = nameSpace.Split('.');
+            if(nameSpace.EndsWith(data[data.Length - 1]))
+            {
+                UrlBase = string.Format(UrlBase, version, "swconst");
+            }else
+            {                
+                UrlBase = string.Format(UrlBase, version, data[data.Length-1]+"api");
+            }
         }
 
-        public const string UrlBase = "http://help.solidworks.com/{0}/english/api/sldworksapi/";
+        public string UrlBase { get; private set; } = "http://help.solidworks.com/{0}/english/api/{1}/";
 
-        public int Version { get; private set; } = 2018;
+        public string NameSpace { get; }
+
+        public int Version { get; private set;}
 
         public override bool TryGetUrl(out string url)
         {
-            url = string.Format(UrlBase,Version);
+            url = UrlBase;
             switch (_symbolInfo.Symbol.Kind)
             {
                 case SymbolKind.Event:
