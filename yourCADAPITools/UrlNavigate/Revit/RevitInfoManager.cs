@@ -47,6 +47,7 @@ namespace yourCADAPITools
             {
                 apiName = apiName.Split('`').First();
             }
+            apiName = apiName.Replace("()", "");
             return deserializeObject.FirstOrDefault(x => x.APIName == apiName);
         }
 
@@ -56,7 +57,7 @@ namespace yourCADAPITools
             var revitInfo = Find(apiName);
             if (revitInfo == null)
             {
-                throw new KeyNotFoundException(apiName);
+                throw new KeyNotFoundException(apiName + "Not Found");
             }
             else
             {

@@ -17,8 +17,15 @@ namespace yourCADAPITools
             {
                 UrlBase = string.Format(UrlBase, version, "swconst");
             }else
-            {                
-                UrlBase = string.Format(UrlBase, version, data[data.Length-1]+"api");
+            {
+                if (NameSpace.EndsWith(".swdocumentmgr"))
+                {                    
+                    UrlBase = string.Format(UrlBase, version, "swdocmgrapi");
+                }
+                else
+                {
+                    UrlBase = string.Format(UrlBase, version, data[data.Length-1]+"api");
+                }
             }
         }
 
@@ -68,7 +75,7 @@ namespace yourCADAPITools
             string typeName = _symbolInfo.Symbol.ContainingType.Name;
             string definiationName = _symbolInfo.Symbol.OriginalDefinition.Name;
 
-            return $"{urlBase}{NameSpace}~{NameSpace}~{typeName}~{definiationName}.html";
+            return $"{urlBase}{NameSpace}~{NameSpace}.{typeName}~{definiationName}.html";
         }
 
         private string CombineFieldUrl(string urlBase)
