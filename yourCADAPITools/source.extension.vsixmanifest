@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" ?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="yourCADAPITools.b0a09e3c-8361-4b63-9bc9-ab91a318a241" Version="1.0" Language="en-US" Publisher="苇干 苇岸" />
+        <Identity Id="yourCADAPITools.b0a09e3c-8361-4b63-9bc9-ab91a318a241" Version="1.0" Language="en-US" Publisher="dududu" />
         <DisplayName>yourCADAPITools</DisplayName>
         <Description xml:space="preserve">A visual studio extension that helps to navigate to api doc online with right click in vs directly.</Description>
         <MoreInfo>https://github.com/weianweigan/yourCADAPITools</MoreInfo>

@@ -2,6 +2,10 @@
 
 A visual studio extension that helps to navigate to api doc online with right click in vs directly.
 
+# Download
+
+You can download it from [Visual Studio MarketPlace](https://marketplace.visualstudio.com/items?itemName=dududu.yourCADAPITools)
+
 # Visual Studio 2022
 
 ![Preview](./Resources/preview.png)
