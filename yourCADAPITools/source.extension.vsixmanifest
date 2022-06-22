@@ -3,11 +3,11 @@
     <Metadata>
         <Identity Id="yourCADAPITools.b0a09e3c-8361-4b63-9bc9-ab91a318a241" Version="1.0" Language="en-US" Publisher="苇干 苇岸" />
         <DisplayName>yourCADAPITools</DisplayName>
-        <Description xml:space="preserve">A Visual Studio Extension to open some cad software's api help;</Description>
+        <Description xml:space="preserve">A visual studio extension that helps to navigate to api doc online with right click in vs directly.</Description>
         <MoreInfo>https://github.com/weianweigan/yourCADAPITools</MoreInfo>
         <Icon>Assets\Icons\3D.png</Icon>
         <PreviewImage>Assets\Icons\3D.png</PreviewImage>
-        <Tags>SolidWorks;CAD;Revit;</Tags>
+        <Tags>SolidWorks;CAD;Revit;Rhino;</Tags>
         <Preview>true</Preview>
     </Metadata>
     <Installation>

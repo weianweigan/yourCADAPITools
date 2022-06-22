@@ -52,7 +52,7 @@
     <Compile Include="Core\ApiUrlFinder.cs" />
     <Compile Include="UrlNavigate\AutoCADUrlNavigation.cs" />
     <Compile Include="UrlNavigate\InventorUrlNavigation.cs" />
-    <Compile Include="UrlNavigate\NotSupportedNameSpaceException.cs" />
+    <Compile Include="Exception\NotSupportedNameSpaceException.cs" />
     <Compile Include="UrlNavigate\Revit\RevitInfo.cs" />
     <Compile Include="UrlNavigate\Revit\RevitInfoManager.cs" />
     <Compile Include="UrlNavigate\Revit\RevitUrlNavigation.cs" />
