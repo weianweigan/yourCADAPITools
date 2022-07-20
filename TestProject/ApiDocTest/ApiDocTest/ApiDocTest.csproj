@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoCAD.NET" Version="24.2.0" />
+    <PackageReference Include="Interop.SolidEdge" Version="220.2.0" />
     <PackageReference Include="Revit.RevitApi.x64" Version="2021.0.0" />
     <PackageReference Include="Revit.RevitApiUI.x64" Version="2021.0.0" />
     <PackageReference Include="Rhino3dm" Version="7.14.0" />

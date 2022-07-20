@@ -58,6 +58,7 @@
     <Compile Include="UrlNavigate\Revit\RevitUrlNavigation.cs" />
     <Compile Include="UrlNavigate\Revit\RevitVersion.cs" />
     <Compile Include="UrlNavigate\RhinoCommonUrlNavigation.cs" />
+    <Compile Include="UrlNavigate\SolidEdgeUrlNavigation.cs" />
     <Compile Include="UrlNavigate\SolidWorksUrlNavigation.cs" />
     <Compile Include="UrlNavigate\UrlNavigation.cs" />
     <Compile Include="yourCADAPIToolsPackage.cs" />
