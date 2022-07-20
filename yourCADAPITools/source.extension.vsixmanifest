@@ -5,6 +5,7 @@
         <DisplayName>yourCADAPITools</DisplayName>
         <Description xml:space="preserve">A visual studio extension that helps to navigate to api doc online with right click in vs directly.</Description>
         <MoreInfo>https://github.com/weianweigan/yourCADAPITools</MoreInfo>
+        <License>License.rtf</License>
         <ReleaseNotes>Add SolidEdge</ReleaseNotes>
         <Icon>Assets\Icons\3D.png</Icon>
         <PreviewImage>Assets\Icons\3D.png</PreviewImage>

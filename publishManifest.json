@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json.schemastore.org/vsix-publish",
+  "categories": [
+    "documentation"
+  ],
+  "identity": {
+    "internalName": "yourCADAPITools"
+  },
+  "overview": "README.md",
+  "priceCategory": "free",
+  "publisher": "dududu",
+  "private": false,
+  "qna": true,
+  "repo": "https://github.com/weianweigan/yourCADAPITools"
+}

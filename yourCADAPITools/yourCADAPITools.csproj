@@ -64,7 +64,10 @@
     <Compile Include="yourCADAPIToolsPackage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="License.rtf" />
+    <Content Include="License.rtf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Resources\RevitAPI2022.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>

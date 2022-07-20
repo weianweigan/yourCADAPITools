@@ -27,15 +27,18 @@ jobs:
     # build release
     - name: Build Relase
       run: msbuild yourCADAPITools.sln /p:Configuration=Release
-      
-    # 4.Install Nuget
-    # - name: Install Nuget
-    #  run: |
-    #    $sourceNugetExe = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
-    #    $targetNugetExe = "nuget.exe"
-    #    Invoke-WebRequest $sourceNugetExe -OutFile $targetNugetExe
-        
-    # 5. Push  package
-    #- name: Push generated package to GitHub registry
-    #  run: |
-    #    .\nuget push .\src\IO.Milvus\bin\Release\*.nupkg -Source https://api.nuget.org/v3/index.json -SkipDuplicate -ApiKey ${{ secrets.NugetKey }} -NoSymbols
+     
+    # Collect VSIX
+    - name: Collect artifacts - VSIX
+      uses: actions/upload-artifact@v2
+      with:
+        name: yourCADAPITools-VSIX
+        path: yourCADAPITools\bin\Release\yourCADAPITools.vsix
+
+    # Publish
+    - name: Publish extension to Marketplace
+      uses: cezarypiatek/VsixPublisherAction@0.1
+      with:
+        extension-file: yourCADAPITools\bin\Release\yourCADAPITools.vsix
+        publish-manifest-file: publishManifest.json
+        personal-access-code: ${{ secrets.VS_PUBLISHER_ACCESS_TOKEN }}      
