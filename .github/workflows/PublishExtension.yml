@@ -26,14 +26,7 @@ jobs:
 
     # build release
     - name: Build Relase
-      run: msbuild yourCADAPITools.sln /p:Configuration=Release
-     
-    # Collect VSIX
-    - name: Collect artifacts - VSIX
-      uses: actions/upload-artifact@v2
-      with:
-        name: yourCADAPITools-VSIX
-        path: yourCADAPITools\bin\Release\yourCADAPITools.vsix
+      run: msbuild yourCADAPITools.sln /p:Configuration=Release    
 
     # Publish
     - name: Publish extension to Marketplace
